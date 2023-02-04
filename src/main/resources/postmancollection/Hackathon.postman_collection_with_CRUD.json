@@ -1,0 +1,318 @@
+{
+	"info": {
+		"_postman_id": "fb472ef5-b997-419a-9b78-2fd6a8452132",
+		"name": "Hackathon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23059732"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user\":\"user_read\",\n    \"password\":\"Test@123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/hack/auth/api/v1/auth/:user-type/login",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"hack",
+						"auth",
+						"api",
+						"v1",
+						"auth",
+						":user-type",
+						"login"
+					],
+					"variable": [
+						{
+							"key": "user-type",
+							"value": "admin"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"refreshToken\":\"eyJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE2NzQ1MDkwMjEsImV4cCI6MTY3NDUxMDgyMX0.4s9k6mMxj4bSjco3EdMK1sD3wVJueOAufqTlHj6Iqko\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/hack/auth/:user-type/refresh-token",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"hack",
+						"auth",
+						":user-type",
+						"refresh-token"
+					],
+					"variable": [
+						{
+							"key": "user-type",
+							"value": "admin"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\": \"user\",\n    \"lastName\": \"user\",\n    \"phoneNumber\": \"1234567890\",\n    \"roles\": [\n        \"USER_READ_SELF\"\n    ],\n    \"email\": \"user@read.com\",\n    \"dob\": \"1999/10/16\",\n    \"userName\":\"user_read\",\n    \"password\": \"Test@123\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/hack/auth/:user-type/register",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"hack",
+						"auth",
+						":user-type",
+						"register"
+					],
+					"variable": [
+						{
+							"key": "user-type",
+							"value": "admin"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Read by Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJlNTIxNGFjMC1lMjlhLTRhM2EtYThjNy05MjI5M2UyNjcwNjYiLCJzdWIiOiJhZG1pbl9yZWFkIiwicm9sZXMiOiJST0xFX0FETUlOX1JFQUQsUk9MRV9VU0VSUyxST0xFX1VTRVJfUkVBRCIsImlhdCI6MTY3NDUxMDY0MiwiZXhwIjoxNjc0NTExMjQyfQ.XVlVAosGVHo-aSKLE2RrdQ7BMf3MHJHAJR50FU5jhGo",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/hack/test/users/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"hack",
+						"test",
+						"users",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "28fbe71e-459b-417d-a7eb-8d14c563977d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Admin Read by Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJhZDNlZDJkOS0zYWRjLTRmZTMtOWY2MC02NWJmZWE5OTM1MTkiLCJzdWIiOiJiaGF2ZXNoMiIsInJvbGVzIjoiUk9MRV9BRE1JTl9ERUxFVEUsUk9MRV9BRE1JTl9VUERBVEUsUk9MRV9BRE1JTl9VUERBVEVfU0VMRixST0xFX1VTRVJTIiwiaWF0IjoxNjc0MDUzMTIxLCJleHAiOjE2NzQwNTM3MjF9.8j0Vxo1RIT-K8Mo4tPR7ppwU1zYrJHvvwWOjvb0C1ak",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/hack/auth/admins/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"hack",
+						"auth",
+						"admins",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "28fbe71e-459b-417d-a7eb-8d14c563977d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sample entity",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"firstName\":\"sample\",\n    \"lastName\":\"name\",\n    \"userName\":\"sample_name\",\n    \"phoneNumber\":\"9889898989\",\n    \"email\":\"sample@email.com\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/hack/auth/sample",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"hack",
+						"auth",
+						"sample"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sample entity",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/hack/auth/sample/:id",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"hack",
+						"auth",
+						"sample",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "b65a6ede-01e1-4365-9275-d2643f218064"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Sample entity by Id",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": \"b65a6ede-01e1-4365-9275-d2643f218064\",\n    \"firstName\":\"updaated\",\n    \"lastName\":\"updated 4\",\n    \"userName\":\"new-User\",\n    \"email\":\"new@email.com\",\n    \"phoneNumber\":\"9889898989\"\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/hack/auth/sample",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"hack",
+						"auth",
+						"sample"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All Sample entity",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8000/hack/auth/sample?page&pageSize&firstName&search",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"hack",
+						"auth",
+						"sample"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": null
+						},
+						{
+							"key": "pageSize",
+							"value": null
+						},
+						{
+							"key": "firstName",
+							"value": null
+						},
+						{
+							"key": "search",
+							"value": null
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

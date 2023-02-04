@@ -1,0 +1,42 @@
+server:
+  port: '8000'
+
+spring:
+  application:
+    name: hackathon-service
+
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+  datasource:
+    name: postgres
+    password: saurabhzade
+    driver-class-name: org.postgresql.Driver
+    initialization-mode: always
+    username: postgres
+    url: jdbc:postgresql://localhost:5432/hackathon
+
+jwt:
+  signing:
+    key: jwtsigningtestkey
+  authorities:
+    key: roles
+  token:
+    validity: '600'
+    refresh:
+      validity: '1800'
+
+
+super-admin:
+  username:  super_admin
+  password:  Super1@hack
+
+#management:
+#    endpoints:
+#      web:
+#        exposure:
+#          include: '*'

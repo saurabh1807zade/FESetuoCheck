@@ -1,0 +1,43 @@
+version: "3.9"
+
+services:
+
+    hackathon-db:
+        image: postgres:12.2
+        container_name: hackathon-db
+        networks:
+            - back-end
+        volumes:
+            - ./data/postgresdb:/data/postgresdb
+        restart: always
+        environment:
+            POSTGRES_DB: $POSTGRES_DB
+            POSTGRES_USER: $POSTGRES_USER
+            POSTGRES_PASSWORD: $POSTGRES_PWD
+        ports:
+            - "5432:5432"
+
+
+    hackathon-service:
+        container_name: hackathon-service
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: hackathon-service:latest
+        networks:
+            - back-end
+        volumes:  
+            - ./data/hackathon-service:/data/hackathon-service
+        ports:
+            - "8000:8000"
+        depends_on:
+            - hackathon-db
+        environment:
+            SPRING_DATASOURCE_URL: jdbc:postgresql://hackathon-db:5432/$POSTGRES_DB
+            SPRING_DATASOURCE_USERNAME: $POSTGRES_USER
+            SPRING_DATASOURCE_PASSWORD: $POSTGRES_PWD
+            SPRING_JPA_HIBERNATE_DDL_AUTO: update
+
+
+networks: 
+    back-end:
